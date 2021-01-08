@@ -13,18 +13,30 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "medicos")
+@Table(name = "medicos", indexes = {
+	 @Index(name = "idx_medicos_nome", columnList = "nome", unique = true) ,
+     @Index(name = "idx_medicos_crm", columnList = "crm", unique = true)
+})
 public class Medico extends AbstractEntity {
 
-	@Column(name = "nome", unique = true, nullable = false)
+	@Column(name = "nome", nullable = false)
 	private String nome;
 
-	@Column(name = "crm", unique = true, nullable = false)
+	@Column(name = "crm", nullable = false)
 	private Integer crm;
 
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "data_inscricao", nullable = false)
 	private LocalDate dtInscricao;
+
+	@Column(name = "endereco", nullable = true)
+	private String endereco;
+
+	@Column(name = "telefone", nullable = true)
+	private String telefone;
+
+	@Column(name = "sexo", nullable = true)
+	private String sexo;
 
 	// evita recursividade quando o json de resposta for criado para a datatables.
 	@JsonIgnore
@@ -79,6 +91,30 @@ public class Medico extends AbstractEntity {
 
 	public void setDtInscricao(LocalDate dtInscricao) {
 		this.dtInscricao = dtInscricao;
+	}
+
+	public String getEndereco() {
+		return this.endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getTelefone() {
+		return this.telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getSexo() {
+		return this.sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 
 	public Set<Especialidade> getEspecialidades() {

@@ -4,11 +4,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import javax.persistence.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "agendamentos")
+@Table(name = "agendamentos", indexes = {
+	 	@Index(name = "idx_agend_especialidade", columnList = "id_especialidade"),
+		@Index(name = "idx_agend_medico", columnList = "id_medico"),
+		@Index(name = "idx_agend_paciente", columnList = "id_paciente"),
+		@Index(name = "idx_agend_horario", columnList = "id_horario"),
+ })
 public class Agendamento extends AbstractEntity {
 
 	@ManyToOne
@@ -30,6 +37,17 @@ public class Agendamento extends AbstractEntity {
 	@Column(name="data_consulta")
 	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate dataConsulta;
+
+	@Column(name = "custo")
+	private BigDecimal custo;
+
+	public BigDecimal getCusto() {
+		return this.custo;
+	}
+
+	public void setCusto(BigDecimal custo) {
+		this.custo = custo;
+	}
 
 	public Especialidade getEspecialidade() {
 		return especialidade;

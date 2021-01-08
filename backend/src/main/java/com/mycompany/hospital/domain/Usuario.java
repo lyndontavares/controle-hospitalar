@@ -22,16 +22,13 @@ public class Usuario extends AbstractEntity {
 	@ManyToMany
 	@JoinTable(
 		name = "usuarios_tem_perfis",
-        joinColumns = { @JoinColumn(name = "usuario_id", referencedColumnName = "id") },
-        inverseJoinColumns = { @JoinColumn(name = "perfil_id", referencedColumnName = "id") }
+        joinColumns = { @JoinColumn(name = "id_usuario", referencedColumnName = "id") },
+        inverseJoinColumns = { @JoinColumn(name = "id_perfil", referencedColumnName = "id") }
 	)
 	private List<Perfil> perfis;
 
 	@Column(name = "ativo", nullable = false, columnDefinition = "TINYINT(1)")
 	private boolean ativo;
-
-	@Column(name = "codigo_verificador", length = 6)
-	private String codigoVerificador;
 
 	public Usuario() {
 		super();
@@ -83,14 +80,6 @@ public class Usuario extends AbstractEntity {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
-	}
-
-	public String getCodigoVerificador() {
-		return codigoVerificador;
-	}
-
-	public void setCodigoVerificador(String codigoVerificador) {
-		this.codigoVerificador = codigoVerificador;
 	}
 
 }

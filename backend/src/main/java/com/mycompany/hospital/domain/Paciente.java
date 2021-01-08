@@ -16,6 +16,15 @@ public class Paciente extends AbstractEntity {
 	@Column(name = "nome", unique = true, nullable = false)
 	private String nome;
 
+	@Column(name = "endereco", nullable = true)
+	private String endereco;
+
+	@Column(name = "telefone", nullable = true)
+	private String telefone;
+
+	@Column(name = "sexo", nullable = true)
+	private String sexo;
+
 	@Column(name = "data_nascimento", nullable = false)
 	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate dtNascimento;
@@ -27,6 +36,30 @@ public class Paciente extends AbstractEntity {
 	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
+
+	public String getEndereco() {
+		return this.endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getTelefone() {
+		return this.telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getSexo() {
+		return this.sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 
 	public String getNome() {
 		return nome;

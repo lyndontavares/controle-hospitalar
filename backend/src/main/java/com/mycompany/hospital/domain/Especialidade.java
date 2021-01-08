@@ -6,10 +6,10 @@ import javax.persistence.*;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "especialidades", indexes = {@Index(name = "idx_especialidade_titulo", columnList = "titulo")})
+@Table(name = "especialidades", indexes = {@Index(name = "idx_especialidade_titulo", columnList = "titulo",unique = true)})
 public class Especialidade extends AbstractEntity {
 
-	@Column(name = "titulo", unique = true, nullable = false)
+	@Column(name = "titulo", nullable = false)
 	private String titulo;
 
 	@Column(name = "descricao", columnDefinition = "TEXT")
