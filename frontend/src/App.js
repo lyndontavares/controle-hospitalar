@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 import List from './Components/List/List';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -16,6 +18,17 @@ class App extends Component {
     itemsLastId: 3,
     newItem: { id: '', currentItem: {name: '', service: '', price: ''}, editMode: false, editItem: ''}
   };
+
+
+  componentDidMount() {
+    axios.get(`https://jsonplaceholder.typicode.com/users`)
+      .then(res => {
+        const persons = res.data;
+        //this.setState({ persons });
+
+        console.log( res.data)
+      })
+  }
 
   deleteItemHandler = itemIndex => {
       const items = [...this.state.items];
@@ -39,7 +52,7 @@ class App extends Component {
       this.setState({
          items: [...this.state.items,newItem],
          itemsLastId: itemsLastId,
-         newItem: { id: '', currentItem: {name: '', service: '', price: ''}, editMode: false, editItem: ''} 
+         newItem: { id: '', currentItem: {name: '', service: '', price: ''}, editMode: false, editItem: ''}
       });
   };
 
@@ -63,7 +76,7 @@ class App extends Component {
       this.setState({items: items});
   };
 
-  render() {   
+  render() {
 
     return (
         <div className={classes.App}>

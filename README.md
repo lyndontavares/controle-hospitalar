@@ -12,6 +12,7 @@ https://www.cin.ufpe.br/~gta/rup-vc/extend.bus_model/guidances/guidelines/diagra
 
 ## Diagrama de Classes de Negócio
 
+https://docente.ifrn.edu.br/givanaldorocha/disciplinas/engenharia-de-software-licenciatura-em-informatica/diagrama-de-classes
 https://lucid.app/lucidchart/
 
 ## Modelo Entidade Relacionamento
@@ -28,6 +29,7 @@ https://www.youtube.com/watch?v=2xoJjEgecZM
 https://www.youtube.com/watch?v=EiZbhsVY2Dk&list=PLwgL9IEA0PxUjbhob9UMdpVq12sGrjgU6
 https://www.youtube.com/watch?v=i6Oi-YtXnAU
 https://www.youtube.com/watch?v=0k3czp6O-qg&list=PLXe1Uv1JGlTbrdrcZIZOabEBSpeNeVHD7
+https://jsonplaceholder.typicode.com/
 
 ## JWT
 
