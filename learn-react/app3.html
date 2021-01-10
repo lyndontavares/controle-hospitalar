@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>APP 3 - Pais e filhos (2)</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script   script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script>
+
+            function MeuComponente1() {
+                return  React.createElement( 'div', {className:'componente-1'},
+                    React.createElement(
+                     MeuComponente2
+                    )
+                )
+            }
+            function MeuComponente2() {
+                return  React.createElement( 'div', {className:'componente-2'},
+                    React.createElement(
+                     MeuComponente3
+                    )
+                )
+            }
+            function MeuComponente3() {
+                return  React.createElement( 'div', {className:'componente-3'},
+                    React.createElement(
+                     MeuComponente4
+                    )
+                )
+            }
+            function MeuComponente4() {
+                return  React.createElement('p', null, 'componente 4' )
+            }
+
+            ReactDOM.render(
+                React.createElement(MeuComponente1,null,null),
+                document.getElementById('app')
+            )
+
+        </script>
+    </body>
+</html>

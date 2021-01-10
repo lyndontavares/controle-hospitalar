@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>APP 6 - context api</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script   script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script>
+
+            const PessoaContext = React.createContext('nome')
+
+            function MeuComponente1() {
+                const nomeDaPessoa='ISA'
+                return (
+
+                    React.createElement( PessoaContext.Provider, {value: nomeDaPessoa},
+
+                        React.createElement( 'div', {className:'componente-1'},[
+                            React.createElement('h1',null,'Componente 1  ==> '  + nomeDaPessoa),
+                            React.createElement(
+                            MeuComponente2
+                            )]
+                        )
+
+                    )
+                )
+
+            }
+            function MeuComponente2() {
+                return React.createElement( PessoaContext.Consumer, null ,
+                    (nome) =>  (
+
+                        React.createElement( 'div', {className:'componente-2'},
+                            React.createElement('h1',null,'Componente 2  ==> ' + nome)
+                        )
+                    )
+                )
+            }
+
+            ReactDOM.render(
+                React.createElement(MeuComponente1,null,null),
+                document.getElementById('app')
+            )
+
+        </script>
+    </body>
+</html>

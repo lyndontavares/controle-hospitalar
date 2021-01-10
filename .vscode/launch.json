@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch MyHospital",
+            "request": "launch",
+            "mainClass": "com.company.hospital.MyHospital",
+            "projectName": "hospital"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-HospitalApplication<hospital>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
