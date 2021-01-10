@@ -1,6 +1,7 @@
+// https://color.adobe.com/NuBank-color-theme-7651485/
 export const styles = {
     appBar: {
-        backgroundColor: "#343A40",
+        backgroundColor: "##00BCC9",
         height: "50px",
         '& .MuiToolbar-regular': {
             minHeight: "50px"

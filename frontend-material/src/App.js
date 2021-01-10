@@ -18,16 +18,16 @@ class App extends Component {
         <AppBar className={classes.appBar} position="static">
           <Toolbar>
             <Typography className={classes.name} variant="h6">
-              bezKoder
+              Hospital
             </Typography>
             <Link to={"/tutorials"} className={classes.link}>
               <Typography variant="body2">
-                Tutorials
+                Médicos
               </Typography>
             </Link>
             <Link to={"/add"} className={classes.link}>
               <Typography variant="body2">
-                Add
+                Cadastrar
             </Typography>
             </Link>
           </Toolbar>

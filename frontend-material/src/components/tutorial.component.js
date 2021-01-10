@@ -97,7 +97,7 @@ class Tutorial extends Component {
             .then(response => {
                 console.log(response.data);
                 this.setState({
-                    message: "The tutorial was updated successfully!"
+                    message: "Atualizado com sucesso"
                 });
             })
             .catch(e => {
@@ -190,7 +190,7 @@ class Tutorial extends Component {
                 ) : (
                         <div>
                             <br />
-                            <p>Please click on a Tutorial...</p>
+                            <p>Selecione para consultar...</p>
                         </div>
                     )}
             </div>

@@ -75,7 +75,7 @@ class AddTutorial extends Component {
             <React.Fragment>
                 {this.state.submitted ? (
                     <div className={classes.form}>
-                        <h4>You submitted successfully!</h4>
+                        <h4>Cadastro com sucesso</h4>
                         <Button
                             size="small"
                             color="primary"
@@ -88,7 +88,7 @@ class AddTutorial extends Component {
                         <div className={classes.form}>
                             <div className={classes.textField}>
                                 <TextField
-                                    label="Title"
+                                    label="Nome"
                                     name="title"
                                     value={this.state.title}
                                     onChange={this.onChangeTitle}
@@ -98,7 +98,37 @@ class AddTutorial extends Component {
 
                             <div className={classes.textField}>
                                 <TextField
-                                    label="Description"
+                                    label="Endereço"
+                                    name="description"
+                                    value={this.state.description}
+                                    onChange={this.onChangeDescription}
+                                    required
+                                />
+                            </div>
+
+                            <div className={classes.textField}>
+                                <TextField
+                                    label="Telefone"
+                                    name="description"
+                                    value={this.state.description}
+                                    onChange={this.onChangeDescription}
+                                    required
+                                />
+                            </div>
+
+                            <div className={classes.textField}>
+                                <TextField
+                                    label="Dt.Nascimento"
+                                    name="description"
+                                    value={this.state.description}
+                                    onChange={this.onChangeDescription}
+                                    required
+                                />
+                            </div>
+
+                            <div className={classes.textField}>
+                                <TextField
+                                    label="Sexo"
                                     name="description"
                                     value={this.state.description}
                                     onChange={this.onChangeDescription}

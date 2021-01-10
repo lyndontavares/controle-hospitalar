@@ -6,6 +6,14 @@
             "request": "launch",
             "mainClass": "AppHospital"
         },
+
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "react-material",
+            "url": "http://localhost:8081",
+            "webRoot": "${workspaceFolder}/frontend-material"
+        },
         {
             "type": "java",
             "name": "Launch app1",

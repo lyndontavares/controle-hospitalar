@@ -96,7 +96,7 @@ class TutorialsList extends Component {
         <Grid container>
           <Grid className={classes.search} item sm={12} xs={12} md={12} xl={12} lg={12}>
             <TextField
-              label="Search by title"
+              label="digite nome"
               value={searchTitle}
               onChange={this.onChangeSearchTitle}
             />
@@ -105,11 +105,11 @@ class TutorialsList extends Component {
               variant="outlined"
               className={classes.textField}
               onClick={this.searchTitle}>
-              Search
+              Pesquisar
             </Button>
           </Grid>
           <Grid item md={4}>
-            <h2>Tutorials List</h2>
+            <h2>Cadastrados</h2>
 
             <div className="list-group">
               {tutorials &&
@@ -118,7 +118,7 @@ class TutorialsList extends Component {
                     selected={index === currentIndex}
                     onClick={() => this.setActiveTutorial(tutorial, index)}
                     divider
-                    button	
+                    button
                     key={index}>
                     {tutorial.title}
                   </ListItem>
@@ -132,13 +132,13 @@ class TutorialsList extends Component {
               variant="contained"
               onClick={this.removeAllTutorials}
             >
-              Remove All
+              Remover Todos
           </Button>
           </Grid>
           <Grid item md={8}>
             {currentTutorial ? (
               <div className={classes.tutorial}>
-                <h4>Tutorial</h4>
+                <h4>Cadastro</h4>
                 <div className={classes.detail}>
                   <label>
                     <strong>Title:</strong>
@@ -162,13 +162,13 @@ class TutorialsList extends Component {
                   to={"/tutorials/" + currentTutorial.id}
                   className={classes.edit}
                 >
-                  Edit
+                  Editar
               </Link>
               </div>
             ) : (
                 <div>
                   <br />
-                  <p className={classes.tutorial}>Please click on a Tutorial...</p>
+                  <p className={classes.tutorial}>Selecione para consultar...</p>
                 </div>
               )}
           </Grid>
