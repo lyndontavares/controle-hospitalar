@@ -59,6 +59,7 @@ http://start.spring.io/
 * Spring Boot Tools (https://marketplace.visualstudio.com/items?itemName=Pivotal.vscode-spring-boot)
 * Spring Boot Dashboard (https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-spring-boot-dashboard)
 * Language Support for Java(TM) by Red Hat (https://marketplace.visualstudio.com/items?itemName=redhat.java)
+* https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner
 
 # Swagger
 

@@ -2,6 +2,18 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch AppHospital",
+            "request": "launch",
+            "mainClass": "AppHospital"
+        },
+        {
+            "type": "java",
+            "name": "Launch app1",
+            "request": "launch",
+            "mainClass": "app1"
+        },
+        {
+            "type": "java",
             "name": "Launch MyHospital",
             "request": "launch",
             "mainClass": "com.company.hospital.MyHospital",
