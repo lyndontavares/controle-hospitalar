@@ -42,6 +42,7 @@ https://www.youtube.com/watch?v=Ofktsne-utM&list=PLHz_AreHm4dkBs-795Dsgvau_ekxg8
 ## Linguagem de programação orientada a objetos (Java)
 
 https://www.youtube.com/watch?v=LnORjqZUMIQ
+https://github.com/in28minutes/java-tutorial-for-beginners
 
 ## Framework para linguagem (Spring Boot)
 
