@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @CrossOrigin(origins={"http://localhost:3000"})
-@RestController
+@RestController("/api")
 public class MedicoController {
 
     private final Logger log = LoggerFactory.getLogger(MedicoController.class);
