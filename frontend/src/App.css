@@ -1,9 +1,15 @@
-.App .TextField{
-    width: 200px;
-    margin: 0 10px;
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
 }
 
-.App .Button{
-    margin: 5px;
+.submit-form {
+  max-width: 300px;
+  margin: auto;
 }
 
+.edit-form {
+  max-width: 300px;
+  margin: auto;
+}

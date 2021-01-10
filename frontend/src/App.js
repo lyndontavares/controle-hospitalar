@@ -1,95 +1,44 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import { Switch, Route, Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
-import List from './Components/List/List';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
-import classes from './App.css';
+import AddTutorial from "./components/add-tutorial.component";
+import Tutorial from "./components/tutorial.component";
+import TutorialsList from "./components/tutorials-list.component";
 
 class App extends Component {
-
-  state = {
-    items: [
-      { id: 1, currentItem: {name: 'Alex', service: 'Transfers', price: 150}, editMode: false, editItem: {} },
-      { id: 2, currentItem: {name: 'Max',  service: 'Design',    price: 250}, editMode: false, editItem: {} },
-      { id: 3, currentItem: {name: 'Kate', service: 'SMM',       price: 350}, editMode: false, editItem: {} }
-    ],
-    itemsLastId: 3,
-    newItem: { id: '', currentItem: {name: '', service: '', price: ''}, editMode: false, editItem: ''}
-  };
-
-
-  componentDidMount() {
-    axios.get(`https://jsonplaceholder.typicode.com/users`)
-      .then(res => {
-        const persons = res.data;
-        //this.setState({ persons });
-
-        console.log( res.data)
-      })
-  }
-
-  deleteItemHandler = itemIndex => {
-      const items = [...this.state.items];
-      items.splice(itemIndex,1);
-      this.setState({items: items});
-  };
-
-  newInputChangeHandler = (event,type) => {
-      const newItem = {...this.state.newItem};
-      newItem.currentItem[type] = event.target.value;
-      this.setState({newItem: newItem});
-  };
-
-  addItemHandler = () => {
-      let itemsLastId = this.state.itemsLastId;
-      itemsLastId++;
-
-      const newItem = {...this.state.newItem};
-      newItem.id = itemsLastId;
-
-      this.setState({
-         items: [...this.state.items,newItem],
-         itemsLastId: itemsLastId,
-         newItem: { id: '', currentItem: {name: '', service: '', price: ''}, editMode: false, editItem: ''}
-      });
-  };
-
-  changeClickItemHandler = index => {
-      const items = [...this.state.items];
-      items[index].editItem = {...items[index].currentItem};
-      items[index].editMode = true;
-      this.setState({items: items});
-  };
-
-  changeEditInputHandler = (event, index, type) => {
-      const items = [...this.state.items];
-      items[index].editItem[type] = event.target.value;
-      this.setState({items: items});
-  };
-
-  saveItemHandler = index => {
-      const items = [...this.state.items];
-      items[index].currentItem = {...items[index].editItem};
-      items[index].editMode = false;
-      this.setState({items: items});
-  };
-
   render() {
-
     return (
-        <div className={classes.App}>
-            <TextField className={classes.TextField} label="Name" value={this.state.newItem.currentItem.name} onChange={(event)=>this.newInputChangeHandler(event,'name')}/>
-            <TextField className={classes.TextField} label="Service" value={this.state.newItem.currentItem.service} onChange={(event)=>this.newInputChangeHandler(event,'service')}/>
-            <TextField className={classes.TextField} label="Price" value={this.state.newItem.currentItem.price} onChange={(event)=>this.newInputChangeHandler(event,'price')}/>
-            <Button mini variant="fab" color="primary" className={classes.Button} onClick={this.addItemHandler}>
-                <AddIcon />
-            </Button>
-            <List items={this.state.items} delete={this.deleteItemHandler} change={this.changeClickItemHandler} changeEdit={this.changeEditInputHandler} save={this.saveItemHandler} />
+      <div>
+        <nav className="navbar navbar-expand navbar-dark bg-dark">
+          <Link to={"/tutorials"} className="navbar-brand">
+            bezKoder
+          </Link>
+          <div className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link to={"/tutorials"} className="nav-link">
+                Tutorials
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/add"} className="nav-link">
+                Add
+              </Link>
+            </li>
+          </div>
+        </nav>
+
+        <div className="container mt-3">
+          <Switch>
+            <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
+            <Route exact path="/add" component={AddTutorial} />
+            <Route path="/tutorials/:id" component={Tutorial} />
+          </Switch>
         </div>
+      </div>
     );
-  };
-};
+  }
+}
 
 export default App;
