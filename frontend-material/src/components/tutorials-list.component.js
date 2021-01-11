@@ -109,7 +109,7 @@ class TutorialsList extends Component {
             </Button>
           </Grid>
           <Grid item md={4}>
-            <h2>Cadastrados</h2>
+            <h2>Lista</h2>
 
             <div className="list-group">
               {tutorials &&
@@ -120,7 +120,7 @@ class TutorialsList extends Component {
                     divider
                     button
                     key={index}>
-                    {tutorial.title}
+                    {tutorial.nome}
                   </ListItem>
                 ))}
             </div>
@@ -141,21 +141,46 @@ class TutorialsList extends Component {
                 <h4>Cadastro</h4>
                 <div className={classes.detail}>
                   <label>
-                    <strong>Title:</strong>
+                    <strong>Nome:</strong>
                   </label>{" "}
-                  {currentTutorial.title}
+                  {currentTutorial.nome}
                 </div>
                 <div className={classes.detail}>
                   <label>
-                    <strong>Description:</strong>
+                    <strong>CRM:</strong>
                   </label>{" "}
-                  {currentTutorial.description}
+                  {currentTutorial.crm}
+                </div>
+                 <div className={classes.detail}>
+                  <label>
+                    <strong>Dt.Inscricao:</strong>
+                  </label>{" "}
+                  {currentTutorial.dtInscricao}
                 </div>
                 <div className={classes.detail}>
                   <label>
-                    <strong>Status:</strong>
+                    <strong>Telefone:</strong>
                   </label>{" "}
-                  {currentTutorial.published ? "Published" : "Pending"}
+                  {currentTutorial.telefone}
+                </div>
+                <div className={classes.detail}>
+                  <label>
+                    <strong>Endereço:</strong>
+                  </label>{" "}
+                  {currentTutorial.endereco}
+                </div>
+                <div className={classes.detail}>
+                  <label>
+                    <strong>Sexo:</strong>
+                  </label>{" "}
+                  {currentTutorial.sexo}
+                </div>
+
+                <div className={classes.detail}>
+                  <label>
+                    <strong>Situação:</strong>
+                  </label>{" "}
+                  {currentTutorial.published ? "Ativo" : "Inativo"}
                 </div>
 
                 <Link

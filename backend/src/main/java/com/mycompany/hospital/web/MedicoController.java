@@ -2,6 +2,7 @@ package com.mycompany.hospital.web;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Optional;
 
 import com.mycompany.hospital.domain.Medico;
@@ -22,8 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
-@CrossOrigin(origins={"http://localhost:3000"})
-@RestController("/api")
+@CrossOrigin(origins={"http://localhost:8081"})
+@RestController
 public class MedicoController {
 
     private final Logger log = LoggerFactory.getLogger(MedicoController.class);
@@ -32,8 +33,9 @@ public class MedicoController {
     private MedicoRepository repository;
 
     @GetMapping("/medicos")
-    public Iterable<Medico> getAll() {
-        return repository.findAll();
+    public ResponseEntity<Iterable<Medico>> getAll2() {
+            Iterable<Medico> tutorials = repository.findAll();
+            return new ResponseEntity<>(tutorials, HttpStatus.OK);
     }
 
     @GetMapping("/medicos/{id}")

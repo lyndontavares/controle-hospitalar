@@ -129,9 +129,10 @@ class Tutorial extends Component {
                             <div>
                                 <TextField
                                     className={classes.textField}
-                                    label="Title"
-                                    name="title"
-                                    value={currentTutorial.title}
+                                    label="nome"
+                                    name="nome"
+                                    placeholder=""
+                                    value={currentTutorial.nome}
                                     onChange={this.onChangeTitle}
                                     required
                                 />
@@ -139,9 +140,10 @@ class Tutorial extends Component {
                             <div>
                                 <TextField
                                     className={classes.textField}
-                                    label="Description"
-                                    name="description"
-                                    value={currentTutorial.description}
+                                    label="CRM"
+                                    name="crm"
+                                    placeholder=""
+                                    value={currentTutorial.crm}
                                     onChange={this.onChangeDescription}
                                     required
                                 />
@@ -155,35 +157,23 @@ class Tutorial extends Component {
                             </div>
                         </form>
                         <div className={classes.buttonWrapper}>
-                            {currentTutorial.published ? (
-                                <Button
-                                    className={`${classes.publish} ${classes.button}`}
-                                    onClick={() => this.updatePublished(false)}
-                                >
-                                    UnPublish
-              </Button>
-                            ) : (
-                                    <Button
-                                        className={`${classes.publish} ${classes.button}`}
-                                        onClick={() => this.updatePublished(true)}
-                                    >
-                                        Publish
-              </Button>
-                                )}
-                            <Button
-                                className={`${classes.delete} ${classes.button}`}
-                                onClick={this.deleteTutorial}
-                            >
-                                Delete
-            </Button>
 
                             <Button
                                 type="submit"
                                 className={`${classes.update} ${classes.button}`}
                                 onClick={this.updateTutorial}
                             >
-                                Update
-            </Button>
+                                Gravar
+                           </Button>
+
+                            <Button
+                                className={`${classes.delete} ${classes.button}`}
+                                onClick={this.deleteTutorial}
+                            >
+                                Cancelar
+                             </Button>
+
+
                         </div>
                         <p>{this.state.message}</p>
                     </div>

@@ -89,8 +89,8 @@ class AddTutorial extends Component {
                             <div className={classes.textField}>
                                 <TextField
                                     label="Nome"
-                                    name="title"
-                                    value={this.state.title}
+                                    name="nome"
+                                    value={this.state.nome}
                                     onChange={this.onChangeTitle}
                                     required
                                 />
@@ -98,9 +98,9 @@ class AddTutorial extends Component {
 
                             <div className={classes.textField}>
                                 <TextField
-                                    label="Endereço"
-                                    name="description"
-                                    value={this.state.description}
+                                    label="CRM"
+                                    name="crm"
+                                    value={this.state.crm}
                                     onChange={this.onChangeDescription}
                                     required
                                 />
@@ -110,7 +110,7 @@ class AddTutorial extends Component {
                                 <TextField
                                     label="Telefone"
                                     name="description"
-                                    value={this.state.description}
+                                    value={this.state.telefone}
                                     onChange={this.onChangeDescription}
                                     required
                                 />
@@ -118,9 +118,9 @@ class AddTutorial extends Component {
 
                             <div className={classes.textField}>
                                 <TextField
-                                    label="Dt.Nascimento"
+                                    label="Dt.Inscricao"
                                     name="description"
-                                    value={this.state.description}
+                                    value={this.state.dtInscricao}
                                     onChange={this.onChangeDescription}
                                     required
                                 />
@@ -130,18 +130,19 @@ class AddTutorial extends Component {
                                 <TextField
                                     label="Sexo"
                                     name="description"
-                                    value={this.state.description}
+                                    value={this.state.sexo}
                                     onChange={this.onChangeDescription}
                                     required
                                 />
                             </div>
 
                             <Button
+                                className={`${classes.update} ${classes.button}`}
                                 size="small"
                                 color="primary"
                                 variant="contained"
                                 onClick={this.saveTutorial}>
-                                Submit
+                                Gravar
                             </Button>
                         </div>
                     )}
