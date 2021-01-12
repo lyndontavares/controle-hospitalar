@@ -1,4 +1,4 @@
-# Autorea
+# Autores
 
 Lyndon / Isa
 
