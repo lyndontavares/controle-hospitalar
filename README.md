@@ -1,3 +1,7 @@
+# Autores
+
+Lyndon / Isa
+
 # controle-hospitalar
 
 Turma: Terceiro Período de Análise e Desenvolvimento de Sistemas - UNIAMÉRICA
