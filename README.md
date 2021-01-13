@@ -43,6 +43,7 @@ https://www.youtube.com/watch?v=Ofktsne-utM&list=PLHz_AreHm4dkBs-795Dsgvau_ekxg8
 
 * https://www.youtube.com/watch?v=LnORjqZUMIQ
 * https://github.com/in28minutes/java-tutorial-for-beginners
+* https://www.arquivodecodigos.com.br/dicas_truques_categoria2.php?linguagem=2&categoria1=41&categoria2=80
 
 ## Framework para linguagem (Spring Boot)
 
@@ -65,3 +66,12 @@ http://start.spring.io/
 # Swagger
 
 http://localhost:3000/swagger-ui.html
+
+# Princípios
+
+https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530
+
+
+# ides online
+
+https://repl.it/@lyndontavares/AnotherStaticControlflowgraph#Main.java

@@ -88,6 +88,7 @@ class AddTutorial extends Component {
                         <div className={classes.form}>
                             <div className={classes.textField}>
                                 <TextField
+                                    variant="standard"
                                     label="Nome"
                                     name="nome"
                                     value={this.state.nome}
@@ -98,6 +99,7 @@ class AddTutorial extends Component {
 
                             <div className={classes.textField}>
                                 <TextField
+                                    variant="standard"
                                     label="CRM"
                                     name="crm"
                                     value={this.state.crm}
@@ -108,6 +110,7 @@ class AddTutorial extends Component {
 
                             <div className={classes.textField}>
                                 <TextField
+                                    variant="standard"
                                     label="Telefone"
                                     name="description"
                                     value={this.state.telefone}
@@ -118,6 +121,7 @@ class AddTutorial extends Component {
 
                             <div className={classes.textField}>
                                 <TextField
+                                   variant="standard"
                                     label="Dt.Inscricao"
                                     name="description"
                                     value={this.state.dtInscricao}
@@ -128,6 +132,7 @@ class AddTutorial extends Component {
 
                             <div className={classes.textField}>
                                 <TextField
+                                    variant="standard"
                                     label="Sexo"
                                     name="description"
                                     value={this.state.sexo}

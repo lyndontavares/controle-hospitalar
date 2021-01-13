@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Primeiro from './Primeiro'
+import Medico from './Medico'
 import './style.css'
 
 ReactDOM.render(
 
     <div>
-      <h1> Olá Mundo!</h1>
-     <Primeiro/>
+      <h1> Lista de Médicos</h1>
+     <Medico/>
+
     </div>,
 
     document.getElementById('root'),
