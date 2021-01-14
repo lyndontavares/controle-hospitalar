@@ -79,3 +79,6 @@ https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-p
 # ides online
 
 https://repl.it/@lyndontavares/AnotherStaticControlflowgraph#Main.java
+https://www.jetbrains.com/pt-br/idea/
+https://www.arquivodecodigos.com.br/dicas_truques_categoria2.php?linguagem=2&categoria1=41&categoria2=80
+https://developer.ibm.com/br/tutorials/j-introtojava1/
