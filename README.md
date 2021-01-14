@@ -75,10 +75,11 @@ http://localhost:3000/swagger-ui.html
 
 https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530
 
-
 # ides online
 
 https://repl.it/@lyndontavares/AnotherStaticControlflowgraph#Main.java
 https://www.jetbrains.com/pt-br/idea/
 https://www.arquivodecodigos.com.br/dicas_truques_categoria2.php?linguagem=2&categoria1=41&categoria2=80
 https://developer.ibm.com/br/tutorials/j-introtojava1/
+
+henlo
