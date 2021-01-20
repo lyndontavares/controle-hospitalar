@@ -5,7 +5,6 @@ Lyndon / Isa
 # controle-hospitalar
 
 Turma: Terceiro Período de Análise e Desenvolvimento de Sistemas - UNIAMÉRICA
-Professor: Lucas Guilherme Hübner
 
 Sistema para controlar Faturamento Hospitalar: Guia de Consulta, Exame e Consulta
 do Prontuário:
