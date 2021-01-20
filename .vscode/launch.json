@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Ex04",
+            "request": "launch",
+            "mainClass": "Ex04"
+        },
+        {
+            "type": "java",
             "name": "Launch Exemplo01",
             "request": "launch",
             "mainClass": "Exemplo01",
