@@ -124,26 +124,64 @@ class Tutorial extends Component {
             <div>
                 {currentTutorial ? (
                     <div className={classes.form}>
-                        <h2>Tutorial</h2>
+                        <h2>Médico</h2>
                         <form>
-                            <div>
+                            <div className={classes.textField}>
                                 <TextField
+                                    variant="standard"
                                     className={classes.textField}
                                     label="nome"
                                     name="nome"
-                                    placeholder=""
+
                                     value={currentTutorial.nome}
                                     onChange={this.onChangeTitle}
                                     required
                                 />
                             </div>
-                            <div>
+                           <div className={classes.textField}>
                                 <TextField
+                                    variant="standard"
                                     className={classes.textField}
                                     label="CRM"
                                     name="crm"
-                                    placeholder=""
+
                                     value={currentTutorial.crm}
+                                    onChange={this.onChangeDescription}
+                                    required
+                                />
+                            </div>
+                            <div className={classes.textField}>
+                                <TextField
+                                    variant="standard"
+                                    className={classes.textField}
+                                    label="Telefone"
+                                    name="telefone"
+
+                                    value={currentTutorial.telefone}
+                                    onChange={this.onChangeDescription}
+                                    required
+                                />
+                            </div>
+                            <div className={classes.textField}>
+                                <TextField
+                                    variant="standard"
+                                    className={classes.textField}
+                                    label="Dt.Inscricao"
+                                    name="dtInscricao"
+
+                                    value={currentTutorial.dtInscricao}
+                                    onChange={this.onChangeDescription}
+                                    required
+                                />
+                            </div>
+                             <div className={classes.textField}>
+                                <TextField
+                                    variant="standard"
+                                    className={classes.textField}
+                                    label="Sexo"
+                                    name="sexo"
+
+                                    value={currentTutorial.sexo}
                                     onChange={this.onChangeDescription}
                                     required
                                 />

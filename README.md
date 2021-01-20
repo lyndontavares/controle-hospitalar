@@ -85,3 +85,11 @@ https://developer.ibm.com/br/tutorials/j-introtojava1/
 # Trainning
 
 https://reactrouter.com/web/guides/quick-start
+
+# Java
+
+https://www.youtube.com/watch?v=8Tn3bYOUAfQ&list=PLA8Qj9w4RGkVOj-xGYJCHJ0Ob4CMg-8NI&index=1
+
+# motivação
+
+https://www.youtube.com/watch?v=zeuqH8crrP0

@@ -2,11 +2,17 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Exemplo01",
+            "request": "launch",
+            "mainClass": "Exemplo01",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Launch AppHospital",
             "request": "launch",
             "mainClass": "AppHospital"
         },
-
         {
             "type": "chrome",
             "request": "launch",
