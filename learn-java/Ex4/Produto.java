@@ -4,7 +4,7 @@ public class Produto {
 	private int codigo;
 	private String lanche;
 	private double preco;
-	
+
 	public int getCodigo() {
 		return codigo;
 	}
@@ -23,7 +23,7 @@ public class Produto {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	
+
 	public Produto(int codigo, String lanche, double preco) {
 		super();
 		this.codigo = codigo;
@@ -32,7 +32,8 @@ public class Produto {
 	}
 	@Override
 	public String toString() {
+		// 1 - Cachorro-Quente R$ 4.0
 		return codigo + " - " + lanche + " R$ " + preco;
 	}
-	
+
 }
