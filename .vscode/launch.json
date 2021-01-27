@@ -2,6 +2,30 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch TesteConta",
+            "request": "launch",
+            "mainClass": "TesteConta"
+        },
+        {
+            "type": "java",
+            "name": "Launch TesteNotaFiscal",
+            "request": "launch",
+            "mainClass": "TesteNotaFiscal"
+        },
+        {
+            "type": "java",
+            "name": "Launch TestePessoa",
+            "request": "launch",
+            "mainClass": "TestePessoa"
+        },
+        {
+            "type": "java",
+            "name": "Launch TesteHeranca",
+            "request": "launch",
+            "mainClass": "TesteHeranca"
+        },
+        {
+            "type": "java",
             "name": "Launch Teste",
             "request": "launch",
             "mainClass": "Teste"
