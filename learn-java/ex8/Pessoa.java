@@ -4,9 +4,9 @@ public class Pessoa {
 
     int idade;
 
-    @Override
-    public String toString() {
-        return nome + " idade: " + idade;
+    String tornarEmMaiusculas() {
+        return nome.toUpperCase();
     }
+
 
 }

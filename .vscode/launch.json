@@ -2,6 +2,18 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch TesteFigura",
+            "request": "launch",
+            "mainClass": "TesteFigura"
+        },
+        {
+            "type": "java",
+            "name": "Launch TestePessoa2",
+            "request": "launch",
+            "mainClass": "TestePessoa2"
+        },
+        {
+            "type": "java",
             "name": "Launch TesteConta",
             "request": "launch",
             "mainClass": "TesteConta"
