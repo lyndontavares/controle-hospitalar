@@ -1,13 +1,11 @@
-package modelagem;
-
 public class Administrador extends Usuario {
 
 	void suspenderUsuario() {
-		System.out.println("usuário suspenso!");
+		System.out.println("usuï¿½rio suspenso!");
 	}
-	
+
 	void removerUsuario() {
-		System.out.println("Usuário removiso!");
+		System.out.println("Usuï¿½rio removiso!");
 	}
-	
+
 }

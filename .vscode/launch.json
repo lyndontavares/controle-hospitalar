@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch TesteFakeBook",
+            "request": "launch",
+            "mainClass": "TesteFakeBook"
+        },
+        {
+            "type": "java",
             "name": "Launch TesteFigura",
             "request": "launch",
             "mainClass": "TesteFigura"
