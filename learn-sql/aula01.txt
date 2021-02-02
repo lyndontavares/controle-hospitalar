@@ -1,0 +1,555 @@
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database isa
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use isa
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table pessoas( id int, nome varchar(100) );
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_isa |
++---------------+
+| pessoas       |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select * from pessoas;
+Empty set (0.00 sec)
+
+mysql> insert into pessoas ( id, nome ) values ( 1, 'ISA');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from pessoas;
++------+------+
+| id   | nome |
++------+------+
+|    1 | ISA  |
++------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into pessoas ( id, nome ) values ( 2, 'LYNDON');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from pessoas;
++------+--------+
+| id   | nome   |
++------+--------+
+|    1 | ISA    |
+|    2 | LYNDON |
++------+--------+
+2 rows in set (0.00 sec)
+
+mysql> create table animais ( id int, nome varchar(50), idade int);
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> insert into animais ( id,nome,idade) values ( 1,'Tiranossauro Rex', 1000):
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':' at line 1
+mysql> insert into animais ( id,nome,idade) values ( 1,'Tiranossauro Rex', 1000);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from animais;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Tiranossauro Rex |  1000 |
++------+------------------+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into animais ( id,nome,idade) values ( 1,'Onitorrinco', 1000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from animais;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Tiranossauro Rex |  1000 |
+|    1 | Onitorrinco      |  1000 |
++------+------------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from animais where nome like 'Tirano%';
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Tiranossauro Rex |  1000 |
++------+------------------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from animais where nome like '%sauro%';
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Tiranossauro Rex |  1000 |
++------+------------------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from animais where nome like '%Rex';
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Tiranossauro Rex |  1000 |
++------+------------------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from animais where nome like '%rex';
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Tiranossauro Rex |  1000 |
++------+------------------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from animais where id = 1;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Tiranossauro Rex |  1000 |
+|    1 | Onitorrinco      |  1000 |
++------+------------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> delete from animais where nome like 'O%';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from animais;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Tiranossauro Rex |  1000 |
++------+------------------+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into animais ( id,nome,idade) values ( 2,'Onitorrinco', 1000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from animais;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Tiranossauro Rex |  1000 |
+|    2 | Onitorrinco      |  1000 |
++------+------------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from animais where id =2;
++------+-------------+-------+
+| id   | nome        | idade |
++------+-------------+-------+
+|    2 | Onitorrinco |  1000 |
++------+-------------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from animais where id =1;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Tiranossauro Rex |  1000 |
++------+------------------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from animais;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Tiranossauro Rex |  1000 |
+|    2 | Onitorrinco      |  1000 |
++------+------------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> update animais set idade = 2000 where id = 2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from animais;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Tiranossauro Rex |  1000 |
+|    2 | Onitorrinco      |  2000 |
++------+------------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> drop table animais;
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_isa |
++---------------+
+| pessoas       |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> drop table pessoas;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table pessoas( id int, nome varchar(100) );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> create table animais ( id int, nome varchar(50), idade int);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> insert into animais ( id,nome,idade) values ( 1,'Onitorrinco', 1000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into animais ( id,nome,idade) values ( 2,'Tiranossauro Rex', 2000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from animais;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Onitorrinco      |  1000 |
+|    2 | Tiranossauro Rex |  2000 |
++------+------------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from animais where nome like '%o%';
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Onitorrinco      |  1000 |
+|    2 | Tiranossauro Rex |  2000 |
++------+------------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from animais where nome like '%o%' and id = 2;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    2 | Tiranossauro Rex |  2000 |
++------+------------------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from animais where nome like '%o%' and id = 2 and id = 1;
+Empty set (0.00 sec)
+
+mysql> select * from animais where nome like '%o%' and id = 2 or id = 1;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Onitorrinco      |  1000 |
+|    2 | Tiranossauro Rex |  2000 |
++------+------------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from animais where nome like '%o%' and id >=1;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Onitorrinco      |  1000 |
+|    2 | Tiranossauro Rex |  2000 |
++------+------------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from animais where nome like '%o%' and id < 2;
++------+-------------+-------+
+| id   | nome        | idade |
++------+-------------+-------+
+|    1 | Onitorrinco |  1000 |
++------+-------------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from animais where nome like '%o%' and id <> 2;
++------+-------------+-------+
+| id   | nome        | idade |
++------+-------------+-------+
+|    1 | Onitorrinco |  1000 |
++------+-------------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from animais where nome like '%o%' and id <> 1;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    2 | Tiranossauro Rex |  2000 |
++------+------------------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from animais;
++------+------------------+-------+
+| id   | nome             | idade |
++------+------------------+-------+
+|    1 | Onitorrinco      |  1000 |
+|    2 | Tiranossauro Rex |  2000 |
++------+------------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select id from animais;
++------+
+| id   |
++------+
+|    1 |
+|    2 |
++------+
+2 rows in set (0.00 sec)
+
+mysql> select nome from animais;
++------------------+
+| nome             |
++------------------+
+| Onitorrinco      |
+| Tiranossauro Rex |
++------------------+
+2 rows in set (0.00 sec)
+
+mysql> select nome,id from animais;
++------------------+------+
+| nome             | id   |
++------------------+------+
+| Onitorrinco      |    1 |
+| Tiranossauro Rex |    2 |
++------------------+------+
+2 rows in set (0.00 sec)
+
+mysql> select id,id from animais;
++------+------+
+| id   | id   |
++------+------+
+|    1 |    1 |
+|    2 |    2 |
++------+------+
+2 rows in set (0.00 sec)
+
+mysql> select id,id,nome,nome from animais;
++------+------+------------------+------------------+
+| id   | id   | nome             | nome             |
++------+------+------------------+------------------+
+|    1 |    1 | Onitorrinco      | Onitorrinco      |
+|    2 |    2 | Tiranossauro Rex | Tiranossauro Rex |
++------+------+------------------+------------------+
+2 rows in set (0.00 sec)
+
+mysql> select id * 10 from animais;
++---------+
+| id * 10 |
++---------+
+|      10 |
+|      20 |
++---------+
+2 rows in set (0.00 sec)
+
+mysql> select id + 5 -2 from animais;
++-----------+
+| id + 5 -2 |
++-----------+
+|         4 |
+|         5 |
++-----------+
+2 rows in set (0.00 sec)
+
+mysql> select id, id*10 as total from animais;
++------+-------+
+| id   | total |
++------+-------+
+|    1 |    10 |
+|    2 |    20 |
++------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table notafiscal (id int ,produto varchat(100), preco decimal(10,2) ,quantidade decimal(10,2));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchat(100), preco decimal(10,2) ,quantidade decimal(10,2))' at line 1
+mysql> create table notafiscal (id int ,produto varchat(100), preco decimal ,quantidade decimal);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchat(100), preco decimal ,quantidade decimal)' at line 1
+mysql> create table notafiscal (id int ,produto varchat(100), preco numeric ,quantidade numneric);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchat(100), preco numeric ,quantidade numneric)' at line 1
+mysql> create table notafiscal (id int ,produto varchat(100), preco ][][^Cc ,quantidade numneric);
+mysql>
+mysql>
+mysql>
+mysql> clear;
+mysql> cls
+    -> ^C
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> create table notafiscal (id int ,produto varchar(100), preco decimal(10,2) ,quantidade decimal(10,2));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into notafiscal (1,'COCA-COLA,5,10);
+    '> insert into notafiscal (id,produto,preco,quantidade) values (1,'COCA-COLA,5,10)
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,'COCA-COLA,5,10);
+insert into notafiscal (id,produto,preco,quantidade) values ' at line 1
+mysql> insert into notafiscal (id,produto,preco,quantidade) values (1,'COCA-COLA,5,10)
+    '> ;
+    '> insert into notafiscal (id,produto,preco,quantidade) values (1, 'COCA-COLA' ,5,10);
+    '> ;
+    '> ^C
+mysql> insert into notafiscal (id,produto,preco,quantidade) values (1, 'COCA-COLA' ,5,10);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * notafiscal;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'notafiscal' at line 1
+mysql> select * notafiscal;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'notafiscal' at line 1
+mysql> select * from notafiscal;
++------+-----------+-------+------------+
+| id   | produto   | preco | quantidade |
++------+-----------+-------+------------+
+|    1 | COCA-COLA |  5.00 |      10.00 |
++------+-----------+-------+------------+
+1 row in set (0.00 sec)
+
+mysql> select id, produto, preco, quantidade, preco*quantidade as total from notafiscal;
++------+-----------+-------+------------+---------+
+| id   | produto   | preco | quantidade | total   |
++------+-----------+-------+------------+---------+
+|    1 | COCA-COLA |  5.00 |      10.00 | 50.0000 |
++------+-----------+-------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select id as IDENTIFICADOR, produto as `NOME PRODUTO`, preco, quantidade, preco*quantidade as total from notafiscal;
++---------------+--------------+-------+------------+---------+
+| IDENTIFICADOR | NOME PRODUTO | preco | quantidade | total   |
++---------------+--------------+-------+------------+---------+
+|             1 | COCA-COLA    |  5.00 |      10.00 | 50.0000 |
++---------------+--------------+-------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select id, produto, preco, quantidade, preco*quantidade as total from notafiscal;
++------+-----------+-------+------------+---------+
+| id   | produto   | preco | quantidade | total   |
++------+-----------+-------+------------+---------+
+|    1 | COCA-COLA |  5.00 |      10.00 | 50.0000 |
++------+-----------+-------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select id, produto, preco, quantidade, preco*quantidade  from notafiscal;
++------+-----------+-------+------------+------------------+
+| id   | produto   | preco | quantidade | preco*quantidade |
++------+-----------+-------+------------+------------------+
+|    1 | COCA-COLA |  5.00 |      10.00 |          50.0000 |
++------+-----------+-------+------------+------------------+
+1 row in set (0.00 sec)
+
+mysql> select id, produto, preco, quantidade, preco*quantidade as total from notafiscal;
++------+-----------+-------+------------+---------+
+| id   | produto   | preco | quantidade | total   |
++------+-----------+-------+------------+---------+
+|    1 | COCA-COLA |  5.00 |      10.00 | 50.0000 |
++------+-----------+-------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from notafiscal;
++------+-----------+-------+------------+
+| id   | produto   | preco | quantidade |
++------+-----------+-------+------------+
+|    1 | COCA-COLA |  5.00 |      10.00 |
++------+-----------+-------+------------+
+1 row in set (0.00 sec)
+
+mysql> select produto from notafiscal;
++-----------+
+| produto   |
++-----------+
+| COCA-COLA |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> create produtos ( id int, nome varchat(100));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'produtos ( id int, nome varchat(100))' at line 1
+mysql> create produtos ( id int, nome varchar(100));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'produtos ( id int, nome varchar(100))' at line 1
+mysql> create table produtos ( id int, nome varchar(100));
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> insert into produtos (id,nome) values (1,'COCA-COLA');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from produtos;
++------+-----------+
+| id   | nome      |
++------+-----------+
+|    1 | COCA-COLA |
++------+-----------+
+1 row in set (0.00 sec)
+
+mysql> alter table notafiscal drop produto;
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from notafiscal;
++------+-------+------------+
+| id   | preco | quantidade |
++------+-------+------------+
+|    1 |  5.00 |      10.00 |
++------+-------+------------+
+1 row in set (0.00 sec)
+
+mysql> alter table notafiscal add id_produto int;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from notafiscal;
++------+-------+------------+------------+
+| id   | preco | quantidade | id_produto |
++------+-------+------------+------------+
+|    1 |  5.00 |      10.00 |       NULL |
++------+-------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> update notafiscal set id_produto=1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from notafiscal;
++------+-------+------------+------------+
+| id   | preco | quantidade | id_produto |
++------+-------+------------+------------+
+|    1 |  5.00 |      10.00 |          1 |
++------+-------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from notafiscal,produtos where notafiscal.id_produto = produtos.id;
++------+-------+------------+------------+------+-----------+
+| id   | preco | quantidade | id_produto | id   | nome      |
++------+-------+------------+------------+------+-----------+
+|    1 |  5.00 |      10.00 |          1 |    1 | COCA-COLA |
++------+-------+------------+------------+------+-----------+
+1 row in set (0.00 sec)
+
+mysql> select id, produtos.nome, preco, quantidade from notafiscal,produtos where notafiscal.id_produto = produtos.id;
+ERROR 1052 (23000): Column 'id' in field list is ambiguous
+mysql> select notafiscal.id, produtos.nome, preco, quantidade from notafiscal,produtos where notafiscal.id_produto = produtos.id;
++------+-----------+-------+------------+
+| id   | nome      | preco | quantidade |
++------+-----------+-------+------------+
+|    1 | COCA-COLA |  5.00 |      10.00 |
++------+-----------+-------+------------+
+1 row in set (0.00 sec)
+
+mysql> select notafiscal.id, produtos.nome, preco, quantidade, preco*quantidade as total from notafiscal,produtos where notafiscal.id_produto = produtos.id;
++------+-----------+-------+------------+---------+
+| id   | nome      | preco | quantidade | total   |
++------+-----------+-------+------------+---------+
+|    1 | COCA-COLA |  5.00 |      10.00 | 50.0000 |
++------+-----------+-------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql>
