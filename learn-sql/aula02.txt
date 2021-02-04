@@ -1,0 +1,791 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database isa;
+ERROR 1007 (HY000): Can't create database 'isa'; database exists
+mysql> use isa;
+Database changed
+mysql> show table
+    -> show table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show table' at line 2
+mysql> show tables;
++---------------+
+| Tables_in_isa |
++---------------+
+| pessoas       |
++---------------+
+1 row in set (0.59 sec)
+
+mysql> show columns from pessoas;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | int          | YES  |     | NULL    |       |
+| nome  | varchar(100) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+2 rows in set (0.55 sec)
+
+mysql> alter table pessoas add column email varchar(100);
+Query OK, 0 rows affected (0.95 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show columns from pessoas;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| id    | int          | YES  |     | NULL    |       |
+| nome  | varchar(100) | YES  |     | NULL    |       |
+| email | varchar(100) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> select * from pessoas;
++------+--------+-------+
+| id   | nome   | email |
++------+--------+-------+
+|    2 | LYNDON | NULL  |
++------+--------+-------+
+1 row in set (0.00 sec)
+
+mysql> alter table pessoas add column data_de_nascimento date;
+Query OK, 0 rows affected (0.30 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show columns from pessoas;
++--------------------+--------------+------+-----+---------+-------+
+| Field              | Type         | Null | Key | Default | Extra |
++--------------------+--------------+------+-----+---------+-------+
+| id                 | int          | YES  |     | NULL    |       |
+| nome               | varchar(100) | YES  |     | NULL    |       |
+| email              | varchar(100) | YES  |     | NULL    |       |
+| data_de_nascimento | date         | YES  |     | NULL    |       |
++--------------------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> alter table pessoas add column telefone varchar(20);
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table pessoas add column ativo boolean;
+Query OK, 0 rows affected (0.13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show columns from pessoas;
++--------------------+--------------+------+-----+---------+-------+
+| Field              | Type         | Null | Key | Default | Extra |
++--------------------+--------------+------+-----+---------+-------+
+| id                 | int          | YES  |     | NULL    |       |
+| nome               | varchar(100) | YES  |     | NULL    |       |
+| email              | varchar(100) | YES  |     | NULL    |       |
+| data_de_nascimento | date         | YES  |     | NULL    |       |
+| telefone           | varchar(20)  | YES  |     | NULL    |       |
+| ativo              | tinyint(1)   | YES  |     | NULL    |       |
++--------------------+--------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> alter table pessoas add column salario decimal(10,2);
+Query OK, 0 rows affected (0.15 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from pessoas;
++------+--------+-------+--------------------+----------+-------+---------+
+| id   | nome   | email | data_de_nascimento | telefone | ativo | salario |
++------+--------+-------+--------------------+----------+-------+---------+
+|    2 | LYNDON | NULL  | NULL               | NULL     |  NULL |    NULL |
++------+--------+-------+--------------------+----------+-------+---------+
+1 row in set (0.00 sec)
+
+mysql> update pessoas set email="lyndon@gmail.com", data_de_nascimento="2020-04-27", ativo=1, salario=50800.707;
+Query OK, 1 row affected, 1 warning (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+mysql> select * from pessoas;
++------+--------+------------------+--------------------+----------+-------+----------+
+| id   | nome   | email            | data_de_nascimento | telefone | ativo | salario  |
++------+--------+------------------+--------------------+----------+-------+----------+
+|    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | NULL     |     1 | 50800.71 |
++------+--------+------------------+--------------------+----------+-------+----------+
+1 row in set (0.00 sec)
+
+mysql> update pessoas set telefone="(45)99823-4877";
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from pessoas;
++------+--------+------------------+--------------------+----------------+-------+----------+
+| id   | nome   | email            | data_de_nascimento | telefone       | ativo | salario  |
++------+--------+------------------+--------------------+----------------+-------+----------+
+|    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |
++------+--------+------------------+--------------------+----------------+-------+----------+
+1 row in set (0.00 sec)
+
+mysql> insert into pessoas(id, nome, email, data_de_nascimento, telephone, ativo, salario) values(1, "ISA", "isa@gmail.com", 2034-08-30, "(47)99732-0666", 1345.666);
+ERROR 1054 (42S22): Unknown column 'telephone' in 'field list'
+mysql> insert into pessoas(id, nome, email, data_de_nascimento, telefone, ativo, salario) values(1, "ISA", "isa@gmail.com", 2034-08-30, "(47)99732-0666", 1345.666);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into pessoas(id, nome, email, data_de_nascimento, telefone, ativo, salario) values(1, "ISA", "isa@gmail.com", 2034-08-30, "(47)99732-0666", 1, 1345.666);
+ERROR 1292 (22007): Incorrect date value: '1996' for column 'data_de_nascimento' at row 1
+mysql> insert into pessoas(id, nome, email, data_de_nascimento, telefone, ativo, salario) values(1, "ISA", "isa@gmail.com", "2004-08-30", "(47)99732-0666", 1, 1345.666);
+Query OK, 1 row affected, 1 warning (0.02 sec)
+
+mysql> select * from pessoas;
++------+--------+------------------+--------------------+----------------+-------+----------+
+| id   | nome   | email            | data_de_nascimento | telefone       | ativo | salario  |
++------+--------+------------------+--------------------+----------------+-------+----------+
+|    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |
+|    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |
++------+--------+------------------+--------------------+----------------+-------+----------+
+2 rows in set (0.00 sec)
+
+mysql> create table produtos(id int, nome varchar, preco decimal(10, 2));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', preco decimal(10, 2))' at line 1
+mysql> create table produtos(id int, nome varchar);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create table produtos(id int, nome varchar(100), preco decimal(10, 2));
+Query OK, 0 rows affected (0.43 sec)
+
+mysql> insert into produtos(id, nome, preco) values(1, "amoeba", 5.45);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into produtos(id, nome, preco) values(2, "banana maca", 100000.00);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into produtos(id, nome, preco) values(3, "salmao", 1.50);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into produtos(id, nome, preco) values(4, "tenebrio", 30.60);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from produtos;
++------+-------------+-----------+
+| id   | nome        | preco     |
++------+-------------+-----------+
+|    1 | amoeba      |      5.45 |
+|    2 | banana maca | 100000.00 |
+|    3 | salmao      |      1.50 |
+|    4 | tenebrio    |     30.60 |
++------+-------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> update produtos set nome = "banana ouro" where id=2;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from produtos;
++------+-------------+-----------+
+| id   | nome        | preco     |
++------+-------------+-----------+
+|    1 | amoeba      |      5.45 |
+|    2 | banana ouro | 100000.00 |
+|    3 | salmao      |      1.50 |
+|    4 | tenebrio    |     30.60 |
++------+-------------+-----------+
+4 rows in set (0.02 sec)
+
+mysql> select * from produtos order by preco;
++------+-------------+-----------+
+| id   | nome        | preco     |
++------+-------------+-----------+
+|    3 | salmao      |      1.50 |
+|    1 | amoeba      |      5.45 |
+|    4 | tenebrio    |     30.60 |
+|    2 | banana ouro | 100000.00 |
++------+-------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from produtos order by id desc;
++------+-------------+-----------+
+| id   | nome        | preco     |
++------+-------------+-----------+
+|    4 | tenebrio    |     30.60 |
+|    3 | salmao      |      1.50 |
+|    2 | banana ouro | 100000.00 |
+|    1 | amoeba      |      5.45 |
++------+-------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select count(*) from produtos;
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.13 sec)
+
+mysql> select max(preco) from produtos;
++------------+
+| max(preco) |
++------------+
+|  100000.00 |
++------------+
+1 row in set (0.03 sec)
+
+mysql> select nome, max(preco) from produtos;
++--------+------------+
+| nome   | max(preco) |
++--------+------------+
+| amoeba |  100000.00 |
++--------+------------+
+1 row in set (0.00 sec)
+
+mysql> select nome, max(preco) from produtos group by nome;
++-------------+------------+
+| nome        | max(preco) |
++-------------+------------+
+| amoeba      |       5.45 |
+| banana ouro |  100000.00 |
+| salmao      |       1.50 |
+| tenebrio    |      30.60 |
++-------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select min(preco) from produto;
+ERROR 1146 (42S02): Table 'isa.produto' doesn't exist
+mysql> select min(preco) from produtos;
++------------+
+| min(preco) |
++------------+
+|       1.50 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(preco) from produtos;
++--------------+
+| avg(preco)   |
++--------------+
+| 25009.387500 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(preco) from produtos;
++------------+
+| sum(preco) |
++------------+
+|  100037.55 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select * from produtos;
++------+-------------+-----------+
+| id   | nome        | preco     |
++------+-------------+-----------+
+|    1 | amoeba      |      5.45 |
+|    2 | banana ouro | 100000.00 |
+|    3 | salmao      |      1.50 |
+|    4 | tenebrio    |     30.60 |
++------+-------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from produtos where preco>5;
++------+-------------+-----------+
+| id   | nome        | preco     |
++------+-------------+-----------+
+|    1 | amoeba      |      5.45 |
+|    2 | banana ouro | 100000.00 |
+|    4 | tenebrio    |     30.60 |
++------+-------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from produtos where id<4;
++------+-------------+-----------+
+| id   | nome        | preco     |
++------+-------------+-----------+
+|    1 | amoeba      |      5.45 |
+|    2 | banana ouro | 100000.00 |
+|    3 | salmao      |      1.50 |
++------+-------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> insert into produtos(id, nome, preco) values(5, "sabao", 13.40);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into produtos(id, nome, preco) values(6, "requeijao", 700.58);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into produtos(id, nome, preco) values(7, "caneta", 65.55);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into produtos(id, nome, preco) values(8, "yakult", 14.20);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into produtos(id, nome, preco) values(9, "leao", 7.39);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into produtos(id, nome, preco) values(10, "folha", 33.33);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into produtos(id, nome, preco) values(11, "fiat idea", 8.80);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into produtos(id, nome, preco) values(12, "carambola", 20.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into produtos(id, nome, preco) values (12, "uva italia", 200.91);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into produtos(id, nome, preco) values (13, "cerberus", 666.66);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from produtos;
++------+-------------+-----------+
+| id   | nome        | preco     |
++------+-------------+-----------+
+|    1 | amoeba      |      5.45 |
+|    2 | banana ouro | 100000.00 |
+|    3 | salmao      |      1.50 |
+|    4 | tenebrio    |     30.60 |
+|    5 | sabao       |     13.40 |
+|    6 | requeijao   |    700.58 |
+|    7 | caneta      |     65.55 |
+|    8 | yakult      |     14.20 |
+|    9 | leao        |      7.39 |
+|   10 | folha       |     33.33 |
+|   11 | fiat idea   |      8.80 |
+|   12 | carambola   |     20.00 |
+|   12 | uva italia  |    200.91 |
+|   13 | cerberus    |    666.66 |
++------+-------------+-----------+
+14 rows in set (0.00 sec)
+
+mysql> select * from produtos where preco>=20 and preco<=50;;
++------+-----------+-------+
+| id   | nome      | preco |
++------+-----------+-------+
+|    4 | tenebrio  | 30.60 |
+|   10 | folha     | 33.33 |
+|   12 | carambola | 20.00 |
++------+-----------+-------+
+3 rows in set (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> select * from produtos where preco>=10 and preco<=200 and nome like "ca";
+Empty set (0.04 sec)
+
+mysql> select * from produtos where preco>=10 and preco<=200 and nome like "ca%";
++------+-----------+-------+
+| id   | nome      | preco |
++------+-----------+-------+
+|    7 | caneta    | 65.55 |
+|   12 | carambola | 20.00 |
++------+-----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from produtos where preco>=10 and preco<=200 and nome like "c%";
++------+-----------+-------+
+| id   | nome      | preco |
++------+-----------+-------+
+|    7 | caneta    | 65.55 |
+|   12 | carambola | 20.00 |
++------+-----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from produtos where preco>=10 and preco<=200 and nome like 'c%';
++------+-----------+-------+
+| id   | nome      | preco |
++------+-----------+-------+
+|    7 | caneta    | 65.55 |
+|   12 | carambola | 20.00 |
++------+-----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from produtos where preco>=10 and nome like 'c%';
++------+-----------+--------+
+| id   | nome      | preco  |
++------+-----------+--------+
+|    7 | caneta    |  65.55 |
+|   12 | carambola |  20.00 |
+|   13 | cerberus  | 666.66 |
++------+-----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from produtos where nome like '%ta';
++------+--------+-------+
+| id   | nome   | preco |
++------+--------+-------+
+|    7 | caneta | 65.55 |
++------+--------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from produtos where nome like '%la';
++------+-----------+-------+
+| id   | nome      | preco |
++------+-----------+-------+
+|   12 | carambola | 20.00 |
++------+-----------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from produtos where nome like '%bo%';
++------+-----------+-------+
+| id   | nome      | preco |
++------+-----------+-------+
+|   12 | carambola | 20.00 |
++------+-----------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from produtos where nome like '%ta%';
++------+------------+--------+
+| id   | nome       | preco  |
++------+------------+--------+
+|    7 | caneta     |  65.55 |
+|   12 | uva italia | 200.91 |
++------+------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from produtos where nome like '%u%';
++------+-------------+-----------+
+| id   | nome        | preco     |
++------+-------------+-----------+
+|    2 | banana ouro | 100000.00 |
+|    6 | requeijao   |    700.58 |
+|    8 | yakult      |     14.20 |
+|   12 | uva italia  |    200.91 |
+|   13 | cerberus    |    666.66 |
++------+-------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> create table vendas(id int, id_pessoa int, id_produto int);
+Query OK, 0 rows affected (0.32 sec)
+
+mysql> insert into vendas(id, id_pessoa, id_produto) values(1, 1, 1);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into vendas(id, id_pessoa, id_produto) values(2, 2, 1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into vendas(id, id_pessoa, id_produto) values(3, 1, 2);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into vendas(id, id_pessoa, id_produto) values(4, 2, 2);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from vendas, pessoas, produtos;
++------+-----------+------------+------+--------+------------------+--------------------+----------------+-------+----------+------+-------------+-----------+
+| id   | id_pessoa | id_produto | id   | nome   | email            | data_de_nascimento | telefone       | ativo | salario  | id   | nome        | preco     |
++------+-----------+------------+------+--------+------------------+--------------------+----------------+-------+----------+------+-------------+-----------+
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    1 | amoeba      |      5.45 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    1 | amoeba      |      5.45 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    1 | amoeba      |      5.45 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    1 | amoeba      |      5.45 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    1 | amoeba      |      5.45 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    1 | amoeba      |      5.45 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    1 | amoeba      |      5.45 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    1 | amoeba      |      5.45 |
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    2 | banana ouro | 100000.00 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    2 | banana ouro | 100000.00 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    2 | banana ouro | 100000.00 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    2 | banana ouro | 100000.00 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    2 | banana ouro | 100000.00 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    2 | banana ouro | 100000.00 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    2 | banana ouro | 100000.00 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    2 | banana ouro | 100000.00 |
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    3 | salmao      |      1.50 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    3 | salmao      |      1.50 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    3 | salmao      |      1.50 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    3 | salmao      |      1.50 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    3 | salmao      |      1.50 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    3 | salmao      |      1.50 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    3 | salmao      |      1.50 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    3 | salmao      |      1.50 |
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    4 | tenebrio    |     30.60 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    4 | tenebrio    |     30.60 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    4 | tenebrio    |     30.60 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    4 | tenebrio    |     30.60 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    4 | tenebrio    |     30.60 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    4 | tenebrio    |     30.60 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    4 | tenebrio    |     30.60 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    4 | tenebrio    |     30.60 |
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    5 | sabao       |     13.40 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    5 | sabao       |     13.40 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    5 | sabao       |     13.40 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    5 | sabao       |     13.40 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    5 | sabao       |     13.40 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    5 | sabao       |     13.40 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    5 | sabao       |     13.40 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    5 | sabao       |     13.40 |
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    6 | requeijao   |    700.58 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    6 | requeijao   |    700.58 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    6 | requeijao   |    700.58 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    6 | requeijao   |    700.58 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    6 | requeijao   |    700.58 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    6 | requeijao   |    700.58 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    6 | requeijao   |    700.58 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    6 | requeijao   |    700.58 |
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    7 | caneta      |     65.55 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    7 | caneta      |     65.55 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    7 | caneta      |     65.55 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    7 | caneta      |     65.55 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    7 | caneta      |     65.55 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    7 | caneta      |     65.55 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    7 | caneta      |     65.55 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    7 | caneta      |     65.55 |
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    8 | yakult      |     14.20 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    8 | yakult      |     14.20 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    8 | yakult      |     14.20 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    8 | yakult      |     14.20 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    8 | yakult      |     14.20 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    8 | yakult      |     14.20 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    8 | yakult      |     14.20 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    8 | yakult      |     14.20 |
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    9 | leao        |      7.39 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    9 | leao        |      7.39 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    9 | leao        |      7.39 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    9 | leao        |      7.39 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    9 | leao        |      7.39 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    9 | leao        |      7.39 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |    9 | leao        |      7.39 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |    9 | leao        |      7.39 |
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   10 | folha       |     33.33 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   10 | folha       |     33.33 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   10 | folha       |     33.33 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   10 | folha       |     33.33 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   10 | folha       |     33.33 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   10 | folha       |     33.33 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   10 | folha       |     33.33 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   10 | folha       |     33.33 |
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   11 | fiat idea   |      8.80 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   11 | fiat idea   |      8.80 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   11 | fiat idea   |      8.80 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   11 | fiat idea   |      8.80 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   11 | fiat idea   |      8.80 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   11 | fiat idea   |      8.80 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   11 | fiat idea   |      8.80 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   11 | fiat idea   |      8.80 |
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   12 | carambola   |     20.00 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   12 | carambola   |     20.00 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   12 | carambola   |     20.00 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   12 | carambola   |     20.00 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   12 | carambola   |     20.00 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   12 | carambola   |     20.00 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   12 | carambola   |     20.00 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   12 | carambola   |     20.00 |
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   12 | uva italia  |    200.91 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   12 | uva italia  |    200.91 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   12 | uva italia  |    200.91 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   12 | uva italia  |    200.91 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   12 | uva italia  |    200.91 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   12 | uva italia  |    200.91 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   12 | uva italia  |    200.91 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   12 | uva italia  |    200.91 |
+|    1 |         1 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   13 | cerberus    |    666.66 |
+|    1 |         1 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   13 | cerberus    |    666.66 |
+|    2 |         2 |          1 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   13 | cerberus    |    666.66 |
+|    2 |         2 |          1 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   13 | cerberus    |    666.66 |
+|    3 |         1 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   13 | cerberus    |    666.66 |
+|    3 |         1 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   13 | cerberus    |    666.66 |
+|    4 |         2 |          2 |    2 | LYNDON | lyndon@gmail.com | 2020-04-27         | (45)99823-4877 |     1 | 50800.71 |   13 | cerberus    |    666.66 |
+|    4 |         2 |          2 |    1 | ISA    | isa@gmail.com    | 2004-08-30         | (47)99732-0666 |     1 |  1345.67 |   13 | cerberus    |    666.66 |
++------+-----------+------------+------+--------+------------------+--------------------+----------------+-------+----------+------+-------------+-----------+
+112 rows in set (0.06 sec)
+
+mysql> select vendas.id, pessoas.id, pessoas.nome, produtos.nome, produtos.preco from vendas, pessoas, produtos;
++------+------+--------+-------------+-----------+
+| id   | id   | nome   | nome        | preco     |
++------+------+--------+-------------+-----------+
+|    1 |    2 | LYNDON | amoeba      |      5.45 |
+|    1 |    1 | ISA    | amoeba      |      5.45 |
+|    2 |    2 | LYNDON | amoeba      |      5.45 |
+|    2 |    1 | ISA    | amoeba      |      5.45 |
+|    3 |    2 | LYNDON | amoeba      |      5.45 |
+|    3 |    1 | ISA    | amoeba      |      5.45 |
+|    4 |    2 | LYNDON | amoeba      |      5.45 |
+|    4 |    1 | ISA    | amoeba      |      5.45 |
+|    1 |    2 | LYNDON | banana ouro | 100000.00 |
+|    1 |    1 | ISA    | banana ouro | 100000.00 |
+|    2 |    2 | LYNDON | banana ouro | 100000.00 |
+|    2 |    1 | ISA    | banana ouro | 100000.00 |
+|    3 |    2 | LYNDON | banana ouro | 100000.00 |
+|    3 |    1 | ISA    | banana ouro | 100000.00 |
+|    4 |    2 | LYNDON | banana ouro | 100000.00 |
+|    4 |    1 | ISA    | banana ouro | 100000.00 |
+|    1 |    2 | LYNDON | salmao      |      1.50 |
+|    1 |    1 | ISA    | salmao      |      1.50 |
+|    2 |    2 | LYNDON | salmao      |      1.50 |
+|    2 |    1 | ISA    | salmao      |      1.50 |
+|    3 |    2 | LYNDON | salmao      |      1.50 |
+|    3 |    1 | ISA    | salmao      |      1.50 |
+|    4 |    2 | LYNDON | salmao      |      1.50 |
+|    4 |    1 | ISA    | salmao      |      1.50 |
+|    1 |    2 | LYNDON | tenebrio    |     30.60 |
+|    1 |    1 | ISA    | tenebrio    |     30.60 |
+|    2 |    2 | LYNDON | tenebrio    |     30.60 |
+|    2 |    1 | ISA    | tenebrio    |     30.60 |
+|    3 |    2 | LYNDON | tenebrio    |     30.60 |
+|    3 |    1 | ISA    | tenebrio    |     30.60 |
+|    4 |    2 | LYNDON | tenebrio    |     30.60 |
+|    4 |    1 | ISA    | tenebrio    |     30.60 |
+|    1 |    2 | LYNDON | sabao       |     13.40 |
+|    1 |    1 | ISA    | sabao       |     13.40 |
+|    2 |    2 | LYNDON | sabao       |     13.40 |
+|    2 |    1 | ISA    | sabao       |     13.40 |
+|    3 |    2 | LYNDON | sabao       |     13.40 |
+|    3 |    1 | ISA    | sabao       |     13.40 |
+|    4 |    2 | LYNDON | sabao       |     13.40 |
+|    4 |    1 | ISA    | sabao       |     13.40 |
+|    1 |    2 | LYNDON | requeijao   |    700.58 |
+|    1 |    1 | ISA    | requeijao   |    700.58 |
+|    2 |    2 | LYNDON | requeijao   |    700.58 |
+|    2 |    1 | ISA    | requeijao   |    700.58 |
+|    3 |    2 | LYNDON | requeijao   |    700.58 |
+|    3 |    1 | ISA    | requeijao   |    700.58 |
+|    4 |    2 | LYNDON | requeijao   |    700.58 |
+|    4 |    1 | ISA    | requeijao   |    700.58 |
+|    1 |    2 | LYNDON | caneta      |     65.55 |
+|    1 |    1 | ISA    | caneta      |     65.55 |
+|    2 |    2 | LYNDON | caneta      |     65.55 |
+|    2 |    1 | ISA    | caneta      |     65.55 |
+|    3 |    2 | LYNDON | caneta      |     65.55 |
+|    3 |    1 | ISA    | caneta      |     65.55 |
+|    4 |    2 | LYNDON | caneta      |     65.55 |
+|    4 |    1 | ISA    | caneta      |     65.55 |
+|    1 |    2 | LYNDON | yakult      |     14.20 |
+|    1 |    1 | ISA    | yakult      |     14.20 |
+|    2 |    2 | LYNDON | yakult      |     14.20 |
+|    2 |    1 | ISA    | yakult      |     14.20 |
+|    3 |    2 | LYNDON | yakult      |     14.20 |
+|    3 |    1 | ISA    | yakult      |     14.20 |
+|    4 |    2 | LYNDON | yakult      |     14.20 |
+|    4 |    1 | ISA    | yakult      |     14.20 |
+|    1 |    2 | LYNDON | leao        |      7.39 |
+|    1 |    1 | ISA    | leao        |      7.39 |
+|    2 |    2 | LYNDON | leao        |      7.39 |
+|    2 |    1 | ISA    | leao        |      7.39 |
+|    3 |    2 | LYNDON | leao        |      7.39 |
+|    3 |    1 | ISA    | leao        |      7.39 |
+|    4 |    2 | LYNDON | leao        |      7.39 |
+|    4 |    1 | ISA    | leao        |      7.39 |
+|    1 |    2 | LYNDON | folha       |     33.33 |
+|    1 |    1 | ISA    | folha       |     33.33 |
+|    2 |    2 | LYNDON | folha       |     33.33 |
+|    2 |    1 | ISA    | folha       |     33.33 |
+|    3 |    2 | LYNDON | folha       |     33.33 |
+|    3 |    1 | ISA    | folha       |     33.33 |
+|    4 |    2 | LYNDON | folha       |     33.33 |
+|    4 |    1 | ISA    | folha       |     33.33 |
+|    1 |    2 | LYNDON | fiat idea   |      8.80 |
+|    1 |    1 | ISA    | fiat idea   |      8.80 |
+|    2 |    2 | LYNDON | fiat idea   |      8.80 |
+|    2 |    1 | ISA    | fiat idea   |      8.80 |
+|    3 |    2 | LYNDON | fiat idea   |      8.80 |
+|    3 |    1 | ISA    | fiat idea   |      8.80 |
+|    4 |    2 | LYNDON | fiat idea   |      8.80 |
+|    4 |    1 | ISA    | fiat idea   |      8.80 |
+|    1 |    2 | LYNDON | carambola   |     20.00 |
+|    1 |    1 | ISA    | carambola   |     20.00 |
+|    2 |    2 | LYNDON | carambola   |     20.00 |
+|    2 |    1 | ISA    | carambola   |     20.00 |
+|    3 |    2 | LYNDON | carambola   |     20.00 |
+|    3 |    1 | ISA    | carambola   |     20.00 |
+|    4 |    2 | LYNDON | carambola   |     20.00 |
+|    4 |    1 | ISA    | carambola   |     20.00 |
+|    1 |    2 | LYNDON | uva italia  |    200.91 |
+|    1 |    1 | ISA    | uva italia  |    200.91 |
+|    2 |    2 | LYNDON | uva italia  |    200.91 |
+|    2 |    1 | ISA    | uva italia  |    200.91 |
+|    3 |    2 | LYNDON | uva italia  |    200.91 |
+|    3 |    1 | ISA    | uva italia  |    200.91 |
+|    4 |    2 | LYNDON | uva italia  |    200.91 |
+|    4 |    1 | ISA    | uva italia  |    200.91 |
+|    1 |    2 | LYNDON | cerberus    |    666.66 |
+|    1 |    1 | ISA    | cerberus    |    666.66 |
+|    2 |    2 | LYNDON | cerberus    |    666.66 |
+|    2 |    1 | ISA    | cerberus    |    666.66 |
+|    3 |    2 | LYNDON | cerberus    |    666.66 |
+|    3 |    1 | ISA    | cerberus    |    666.66 |
+|    4 |    2 | LYNDON | cerberus    |    666.66 |
+|    4 |    1 | ISA    | cerberus    |    666.66 |
++------+------+--------+-------------+-----------+
+112 rows in set (0.00 sec)
+
+mysql> select vendas.id, pessoas.id, pessoas.nome, produtos.nome, produtos.preco from vendas, pessoas, produtos where vendas.id_pessoa=pessoas.id and vendas.id_produto=produto.id;
+ERROR 1054 (42S22): Unknown column 'produto.id' in 'where clause'
+mysql> select vendas.id, pessoas.id, pessoas.nome, produtos.nome, produtos.preco from vendas, pessoas, produtos where vendas.id_pessoa=pessoas.id and vendas.id_produto=produtos.id;
++------+------+--------+-------------+-----------+
+| id   | id   | nome   | nome        | preco     |
++------+------+--------+-------------+-----------+
+|    1 |    1 | ISA    | amoeba      |      5.45 |
+|    2 |    2 | LYNDON | amoeba      |      5.45 |
+|    3 |    1 | ISA    | banana ouro | 100000.00 |
+|    4 |    2 | LYNDON | banana ouro | 100000.00 |
++------+------+--------+-------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> isert into pessoas(id, nome) values(3, "gorge");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'isert into pessoas(id, nome) values(3, "gorge")' at line 1
+mysql> insert into pessoas(id, nome) values(3, "gorge");
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select vendas.id, pessoas.id, pessoas.nome, produtos.nome, produtos.preco from vendas, pessoas, produtos where vendas.id_pessoa=pessoas.id and vendas.id_produto=produtos.id;
++------+------+--------+-------------+-----------+
+| id   | id   | nome   | nome        | preco     |
++------+------+--------+-------------+-----------+
+|    1 |    1 | ISA    | amoeba      |      5.45 |
+|    2 |    2 | LYNDON | amoeba      |      5.45 |
+|    3 |    1 | ISA    | banana ouro | 100000.00 |
+|    4 |    2 | LYNDON | banana ouro | 100000.00 |
++------+------+--------+-------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> insert into vendas(id, id_pessoa, id_produto) values(5, 30, 2);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select vendas.id, pessoas.id, pessoas.nome, produtos.nome, produtos.preco from vendas, pessoas, produtos where vendas.id_pessoa=pessoas.id and vendas.id_produto=produtos.id;
++------+------+--------+-------------+-----------+
+| id   | id   | nome   | nome        | preco     |
++------+------+--------+-------------+-----------+
+|    1 |    1 | ISA    | amoeba      |      5.45 |
+|    2 |    2 | LYNDON | amoeba      |      5.45 |
+|    3 |    1 | ISA    | banana ouro | 100000.00 |
+|    4 |    2 | LYNDON | banana ouro | 100000.00 |
++------+------+--------+-------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select vendas.id, pessoas.id, pessoas.nome, produtos.nome, produtos.preco from vendas, pessoas, produtos where vendas.id_pessoa=pessoas.id and vendas.id_produto=produtos.id;
++------+------+--------+-------------+-----------+
+| id   | id   | nome   | nome        | preco     |
++------+------+--------+-------------+-----------+
+|    1 |    1 | ISA    | amoeba      |      5.45 |
+|    2 |    2 | LYNDON | amoeba      |      5.45 |
+|    3 |    1 | ISA    | banana ouro | 100000.00 |
+|    4 |    2 | LYNDON | banana ouro | 100000.00 |
++------+------+--------+-------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from vendas;
++------+-----------+------------+
+| id   | id_pessoa | id_produto |
++------+-----------+------------+
+|    1 |         1 |          1 |
+|    2 |         2 |          1 |
+|    3 |         1 |          2 |
+|    4 |         2 |          2 |
+|    5 |        30 |          2 |
++------+-----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select vendas.id, pessoas.id, pessoas.nome, produtos.nome, produtos.preco from vendas left join pessoas on vendas.id_pessoa=pessoas.id left join produtos vendas.id_produto=produtos.id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.id_produto=produtos.id' at line 1
+mysql> select vendas.id, pessoas.id, pessoas.nome, produtos.nome, produtos.preco from vendas left join pessoas on vendas.id_pessoa=pessoas.id left join produtos on vendas.id_produto=produtos.id;
++------+------+--------+-------------+-----------+
+| id   | id   | nome   | nome        | preco     |
++------+------+--------+-------------+-----------+
+|    1 |    1 | ISA    | amoeba      |      5.45 |
+|    2 |    2 | LYNDON | amoeba      |      5.45 |
+|    3 |    1 | ISA    | banana ouro | 100000.00 |
+|    4 |    2 | LYNDON | banana ouro | 100000.00 |
+|    5 | NULL | NULL   | banana ouro | 100000.00 |
++------+------+--------+-------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql>
