@@ -2,11 +2,7 @@ package com.mycompany.hospital.web;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
 import java.util.Optional;
-
-import com.mycompany.hospital.domain.Medico;
-import com.mycompany.hospital.repository.MedicoRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.mycompany.hospital.domain.Medico;
+import com.mycompany.hospital.repository.MedicoRepository;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
