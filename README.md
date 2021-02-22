@@ -4,8 +4,6 @@ Repositório de estudos.
 
 ## Lyndon Tavares 
 Coach TI / Desenvelvedor + 20 anos
-## Isa Peres
-Aluna do curso de Análise e Desenvolvimento de sistemas da UniAmérica - Foz do iguaçu/PR
 
 # controle-hospitalar
 
