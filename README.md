@@ -1,4 +1,5 @@
 # Repositório de estudos
+(working in progress)
 
 Repositório de estudos.
 
@@ -6,8 +7,6 @@ Repositório de estudos.
 Coach TI / Desenvelvedor + 20 anos
 
 # controle-hospitalar
-
-Turma: Terceiro Período de Análise e Desenvolvimento de Sistemas - UNIAMÉRICA
 
 Sistema para controlar Faturamento Hospitalar: Guia de Consulta, Exame e Consulta
 do Prontuário:
