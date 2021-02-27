@@ -1,10 +1,10 @@
+> Lyndon Tavares
+ 
+Coach TI / Developer + 20 years
 # Repositório de estudos
 (working in progress)
 
 Repositório de estudos.
-
-## Lyndon Tavares 
-Coach TI / Developer + 20 years
 
 # controle-hospitalar
 
