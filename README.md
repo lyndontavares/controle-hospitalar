@@ -4,7 +4,7 @@
 Repositório de estudos.
 
 ## Lyndon Tavares 
-Coach TI / Desenvelvedor + 20 anos
+Coach TI / Developer + 20 years
 
 # controle-hospitalar
 
