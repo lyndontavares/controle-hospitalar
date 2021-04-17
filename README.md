@@ -1,15 +1,12 @@
+> Lyndon Tavares
+ 
+Coach TI / Developer + 20 years
 # Repositório de estudos
+(working in progress)
 
 Repositório de estudos.
 
-## Lyndon Tavares 
-Coach TI / Desenvelvedor + 20 anos
-## Isa Peres
-Aluna do curso de Análise e Desenvolvimento de sistemas da UniAmérica - Foz do iguaçu/PR
-
 # controle-hospitalar
-
-Turma: Terceiro Período de Análise e Desenvolvimento de Sistemas - UNIAMÉRICA
 
 Sistema para controlar Faturamento Hospitalar: Guia de Consulta, Exame e Consulta
 do Prontuário:
