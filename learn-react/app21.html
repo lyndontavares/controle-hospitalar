@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>APP 21 - Formulários </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <h2> Formulários
+
+        </h2>
+
+       https://pt-br.reactjs.org/docs/forms.html
+
+       <div id="app"></div>
+
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script   script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <script type="text/babel">
+
+            class Reservation extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                isGoing: true,
+                numberOfGuests: 2
+                };
+
+                this.handleInputChange = this.handleInputChange.bind(this);
+            }
+
+            handleInputChange(event) {
+                const target = event.target;
+                const value = target.type === 'checkbox' ? target.checked : target.value;
+                const name = target.name;
+
+                this.setState({
+                [name]: value
+                });
+                // É equivalente a este código no ES5:
+                //                var partialState = {};
+                // partialState[name] = value;
+                // this.setState(partialState);
+            }
+
+            render() {
+                return (
+                <form>
+                    <label>
+                    Estão indo:
+                    <input
+                        name="isGoing"
+                        type="checkbox"
+                        checked={this.state.isGoing}
+                        onChange={this.handleInputChange} />
+                    </label>
+                    <br />
+                    <label>
+                    Número de convidados:
+                    <input
+                        name="numberOfGuests"
+                        type="number"
+                        value={this.state.numberOfGuests}
+                        onChange={this.handleInputChange} />
+                    </label>
+                </form>
+                );
+            }
+            }
+
+            ReactDOM.render(
+                <Reservation />,
+                document.getElementById('app')
+            );
+
+
+        </script>
+    </body>
+</html>

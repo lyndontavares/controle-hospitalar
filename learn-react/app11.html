@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>APP 11 - Manipulando eventos </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <h2> Manipulando eventos
+        </h2>
+        https://pt-br.reactjs.org/docs/handling-events.html
+
+       <div id="app"></div>
+
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script   script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <script type="text/babel">
+
+           class Toggle extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = { isToggleOn: true };
+
+                    // Aqui utilizamos o `bind` para que o `this` funcione dentro da nossa callback
+                    this.handleClick = this.handleClick.bind(this);
+                }
+
+                //bind manual (muito chato)
+                handleClick() {
+                    this.setState(state => ({
+                    isToggleOn: !state.isToggleOn
+                    }));
+                }
+
+                // ou assim (campos de classe pública *default)
+                handleClick2 = () => {
+                    this.setState(state => ({
+                    isToggleOn: !state.isToggleOn
+                    }));
+                }
+
+                // ou assim com arrow function (problema de renderização extra)
+                handleClick3() {
+                    this.setState(state => ({
+                    isToggleOn: !state.isToggleOn
+                    }));
+                }
+
+                render() {
+                    return (
+                    <div>
+                        <button onClick={this.handleClick}>
+                            {this.state.isToggleOn ? 'ON' : 'OFF'}
+                        </button>
+                        <br/>
+                        <button onClick={this.handleClick2}>
+                            {this.state.isToggleOn ? 'ON' : 'OFF'}
+                        </button>
+                         <br/>
+                        <button onClick={() => this.handleClick3() }>
+                            {this.state.isToggleOn ? 'ON' : 'OFF'}
+                        </button>
+                    </div>
+                    );
+                }
+            }
+
+            ReactDOM.render(
+                <Toggle />,
+                document.getElementById('app')
+            );
+
+        </script>
+    </body>
+</html>

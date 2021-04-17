@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>APP 12 - Renderização condicional </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <h2> Renderização condicional
+
+        </h2>
+       https://pt-br.reactjs.org/docs/conditional-rendering.html
+
+       <div id="app"></div>
+
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script   script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <script type="text/babel">
+
+            function UserGreeting(props) {
+            return <h1>Welcome back!</h1>;
+            }
+
+            function GuestGreeting(props) {
+            return <h1>Please sign up.</h1>;
+            }
+
+            function Greeting(props) {
+                const isLoggedIn = props.isLoggedIn;
+                if (isLoggedIn) {
+                    return <UserGreeting />;
+                }
+                return <GuestGreeting />;
+            }
+
+            ReactDOM.render(
+                <Greeting isLoggedIn={false} />,
+                document.getElementById('app')
+            );
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>APP 10 - Manipulando eventos </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <h2> Manipulando eventos
+        </h2>
+        https://pt-br.reactjs.org/docs/handling-events.html
+
+        <br/>
+        Por exemplo, com HTML:
+        <br/>
+        <button onclick="activateLasers()">
+        Ativar lasers
+        </button>
+
+        <br/>
+        É ligeiramente diferente com React:
+        <br/>
+
+        <button onClick={activateLasers}>
+        Ativar lasers
+        </button>
+
+
+        <div id="app"></div>
+
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script   script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <script type="text/babel">
+
+            function ActionLink() {
+                function handleClick(e) {
+                    // e = SyntheticEvent
+                    //* https://pt-br.reactjs.org/docs/events.html */
+                    e.preventDefault();
+                    console.log('O link foi clicado.');
+                }
+
+                return (
+                    <a href="#" onClick={handleClick}>
+                    Clique Aqui
+                    </a>
+                );
+            }
+
+            ReactDOM.render(
+                <ActionLink />,
+                document.getElementById('app')
+            );
+
+        </script>
+    </body>
+</html>

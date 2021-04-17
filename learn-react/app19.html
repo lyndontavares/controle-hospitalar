@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>APP 19 - Formulários </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <h2> Formulários
+
+        </h2>
+
+       https://pt-br.reactjs.org/docs/forms.html
+
+       <div id="app"></div>
+
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script   script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <script type="text/babel">
+
+            class EssayForm extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                    value: 'Por favor, escreva uma dissertação sobre o seu elemento DOM favorito.'
+                    };
+
+                    this.handleChange = this.handleChange.bind(this);
+                    this.handleSubmit = this.handleSubmit.bind(this);
+                }
+
+                handleChange(event) {
+                    this.setState({value: event.target.value});
+                }
+
+                handleSubmit(event) {
+                    alert('Uma dissertação foi enviada: ' + this.state.value);
+                    event.preventDefault();
+                }
+
+                render() {
+                    return (
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                        Dissertação:
+                        <textarea value={this.state.value} onChange={this.handleChange} />
+                        </label>
+                        <input type="submit" value="Enviar" />
+                    </form>
+                    );
+                }
+              }
+
+            ReactDOM.render(
+                <EssayForm />,
+                document.getElementById('app')
+            );
+
+
+        </script>
+    </body>
+</html>

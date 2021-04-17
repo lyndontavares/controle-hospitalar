@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>APP 14 - Renderização condicional </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <h2> Renderização condicional
+
+        </h2>
+       https://pt-br.reactjs.org/docs/conditional-rendering.html
+
+       <div id="app"></div>
+
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script   script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <script type="text/babel">
+
+            function Mailbox(props) {
+            const unreadMessages = props.unreadMessages;
+            return (
+                <div>
+                <h1>Hello!</h1>
+                {unreadMessages.length > 0 &&
+                    <h2>
+                    You have {unreadMessages.length} unread messages.
+                    </h2>
+                }
+                </div>
+            );
+            }
+
+            const messages = ['React', 'Re: React', 'Re:Re: React'];
+            ReactDOM.render(
+            <Mailbox unreadMessages={messages} />,
+            document.getElementById('app')
+            );
+
+
+        </script>
+    </body>
+</html>

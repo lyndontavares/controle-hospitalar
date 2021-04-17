@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>APP 23 - Elevando o State </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <h2> Elevando o State
+        </h2>
+
+        https://pt-br.reactjs.org/docs/lifting-state-up.html
+        <br/><br/>
+
+       <div id="app"></div>
+
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script   script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+
+            function BoilingVerdict(props) {
+            if (props.celsius >= 100) {
+                return <p>A água ferveria.</p>;
+            }
+            return <p>A água não ferveria.</p>;
+            }
+
+            const scaleNames = {
+                c: 'Celsius',
+                f: 'Fahrenheit'
+                };
+
+            class TemperatureInput extends React.Component {
+            constructor(props) {
+                super(props);
+                this.handleChange = this.handleChange.bind(this);
+                this.state = {temperature: ''};
+            }
+
+            handleChange(e) {
+                this.setState({temperature: e.target.value});
+            }
+
+            render() {
+                const temperature = this.state.temperature;
+                const scale = this.props.scale;
+                return (
+                <fieldset>
+                    <legend>Informe a temperatura em {scaleNames[scale]}:</legend>
+                    <input value={temperature}
+                        onChange={this.handleChange} />
+                     <BoilingVerdict
+                         celsius={parseFloat(temperature)} />
+                </fieldset>
+                );
+            }
+            }
+
+            class Calculator extends React.Component {
+            render() {
+                return (
+                <div>
+                    <TemperatureInput scale="c" />
+                    <TemperatureInput scale="f" />
+                </div>
+                );
+            }
+            }
+
+            ReactDOM.render(
+                <Calculator />,
+                document.getElementById('app')
+            );
+
+
+        </script>
+    </body>
+</html>

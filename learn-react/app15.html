@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>APP 15 - Listas e Chaves </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <h2> Listas e Chaves
+
+        </h2>
+       https://pt-br.reactjs.org/docs/lists-and-keys.html
+
+       <div id="app"></div>
+
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script   script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <script type="text/babel">
+
+            const numbers = [1, 2, 3, 4, 5];
+            const listItems = numbers.map((number) =>
+            <li>{number}</li>
+            );
+
+            ReactDOM.render(
+                <ul>{listItems}</ul>,
+                document.getElementById('app')
+            );
+
+
+        </script>
+    </body>
+</html>
