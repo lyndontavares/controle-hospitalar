@@ -1,6 +1,6 @@
 > Lyndon Tavares
  
-Coach TI / Developer + 20 years
+Developer + 20 years
 # Repositório de estudos
 (working in progress)
 
